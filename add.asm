@@ -1,0 +1,14 @@
+# Load some registers
+main:
+	li	$t0, 0x0
+	li	$t1, 0x1
+	li	$t2, 0x2
+	li	$t3, 0x3
+	li	$t4, 0x4
+	li	$t5, 0x5
+	li	$t6, 0x6
+	li	$t7, 0xE
+
+
+	li	$v0, 10
+	syscall
