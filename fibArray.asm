@@ -50,7 +50,7 @@ write_loop:
     j		write_loop				    # jump back to top of write_loop
     
 fib_write_done:
-    jr		$ra					# jump to $ra
+    jr		$ra					        # jump to $ra
 
 
 # Print out the first x items of an int array
