@@ -1,5 +1,4 @@
 # Puts the first x amount of numbers of the fibonacci sequence into an array
-
 # Registers used:
 #   $a0     - value of x
 #   $a1     - address of array
@@ -35,7 +34,7 @@ fib_write:
 
     sw		$t2, 0($t5)		# fib_arr[0] = 1
     addi	$t5, $t5, 4	    # point to the next open spot in the array
-    sw		$t3, 4($t5)		# fib_arr[1] = 1 
+    sw		$t3, 0($t5)		# fib_arr[1] = 1 
     addi	$t5, $t5, 4	    # point to the next open spot in the array   
 
 write_loop:
@@ -64,21 +63,26 @@ fib_write_done:
 print_int_array:
     move 	$t5, $a0		    # preserve $a0
     addi	$t0, $0, 0			# initialize n to 0
-    move 	$t1, $a1		    # initialize $t1 to $a0
+    move 	$t1, $a1		    # initialize $t1 to $a1
 
 print_loop:
     bge		$t0, $t5, print_int_array_done	# loop while n < x
-    lw		$a0, 0($t1)		                # put arr[i] into $v0 
+    lw		$a0, 0($t1)		                # put arr[i] into $a0 
 
     li		$v0, 1		        # print what's in $a0 (arr[i])
     syscall                     #
+
+    li		$a0, 32		        # print a space character between each number
+    li		$v0, 11		        # 
+    syscall                     #
     
     addi	$t1, $t1, 4			# point to the next spot in the array
-    addi	$t0, $0, 1			# n++
+    addi	$t0, $t0, 1			# n++
     
     j		print_loop			# jump to print_loop
 
 print_int_array_done:
+    move 	$a0, $t5		    # restore $a0
     jr		$ra					# jump to $ra
     
 
