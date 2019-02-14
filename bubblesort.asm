@@ -7,14 +7,14 @@
 #
 # 
     .data
-int_array:      .space 80   # declare 80 bytes of storage to hold 20 integers
+int_array:      .space 80       # declare 80 bytes of storage to hold 20 integers
 input:          .space 1024
 
     .text
 main:
-    li		$t9, 0		# will be counter for numbers taken in 
+    li		$t9, 0		        # will be counter for numbers taken in 
     la		$s0, int_array	    # load base address of array into register $s0
-    li		$s2, 4      # load 4 into s2 for calculating offsets
+    li		$s2, 4              # load 4 into $s2 for calculating offsets
     ## begin atoi algorithm
     la		$a0, input	 
     li		$a1, 1024		             
@@ -57,17 +57,17 @@ end_next_sum:
 ###################################################################################################################
 bubblesort:
     bgt		offset($s0), offset+4($s0), greater	# if offset($s0) > offset+4($s0) then swap
-    blt		offset($s0), offset+4($s0), less	# if $t0 < $t1 then target
+    blt		offset($s0), offset+4($s0), less	# if offset($s0) > offset+4($s0) then move to next value
 greater:
                                             ## begin swap algorithm  
     move 	$t1, offset($t0)		        # 1. set a register to hold the value of the left integer in the array
     move 	offset($t0), offset+4($t0) 	    # 2. move the value of the right integer into the left integer   
     move 	offset+4($t0), $t1		        # 3. move the value in the register to the right integer
                                             ## end swap algorithm
-    addu    offset, offset, 4   # add 4 to offset to move to next value
+    addu    offset, offset, 4       # add 4 to offset to move to next value
     j		bubblesort				# jump to bubblesort
 less:
-    addu    offset, offset, 4   # add 4 to offset to move to next value
+    addu    offset, offset, 4       # add 4 to offset to move to next value
     j		bubblesort				# jump to bubblesort
 end_bubblesort:
 ###################################################################################################################
