@@ -56,7 +56,7 @@ sin_calc:   # args: ($f12 = float(x)), ($a0 = int(level of precision))
 
 sin_calc_loop:
 
-    # calc x^3 #
+    # calc x^n #
     move 	$a0, $t0		# arg1 = x
     li		$a1, 3		    # $a1 = 3
     jal		exp				# jump to exp and save position to $ra
@@ -64,12 +64,14 @@ sin_calc_loop:
 
     move 	$t2, $v0		# move return value of exp into $t2
     
+    # calc n! #
     li		$a0, 3		    # $a0 = 3
     jal		fact			# jump to fact and save position to $ra
     nop
     
     move 	$t3, $v0		# move return value of exp into $t3
 
+    # Get value of term n and add (or subtract) it from the aggregated value #
     div.s   $t1, $t2, $t3   # divide x^n / y! and put it into $t1
     sub		$t9, $t9, $t1	# $t9 = $t9 - $t1
     
