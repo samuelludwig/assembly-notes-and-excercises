@@ -55,6 +55,12 @@ sin_calc:   # args: ($f12 = float(x)), ($a0 = int(level of precision))
     move 	$t0, $t9		# first term; product += x
 
 sin_calc_loop:
+    # calc x^n
+    # calc n!
+    # calc (x^n)/(n!)
+    # total -= (x^n)/(n!)
+    # n += 2
+    # if level of precision not reached, loop 
 
     # calc x^n #
     move 	$a0, $t0		# arg1 = x
