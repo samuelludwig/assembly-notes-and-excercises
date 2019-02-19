@@ -87,7 +87,12 @@ sin_calc_loop:
 sin_calc_done:
 
 fact:   # args: ($a0 = y)
-# return (y!)
+        # return (y!)
+    # float sum = y;
+    # for (int i = y-1; i > 0; i--) {
+    #   sum *= y;
+    # }
+    # return sum; 
 
 exp:    # args: ($f12 = float(x)), ($a1 = int(exp_val))
         # return (x)^(exp_val)
