@@ -85,6 +85,9 @@ sin_calc_loop:
     
 
 sin_calc_done:
+    # $f0
+    jr		$ra					# jump to $ra
+    
 
 fact:   # args: ($a0 = y)
         # return ($v0 = y!)
@@ -114,7 +117,7 @@ fact_loop_done:
 exp:    # args: ($f12 = float(x)), ($a1 = int(exp_val))
         # return (x)^(exp_val)
     move.s 	$f4, $f12		# $f0 = float(x)
-    li.s    $f5, $f4        # $f1 = total, init to x
+    move.s    $f5, $f4        # $f1 = total, init to x
     move 	$t1, $a1		# $t1 = exponent value
     li		$t2, 0		    # $t2 = exponent counter
     
@@ -128,6 +131,14 @@ exp_loop_done:
     jr		$ra				# return to $ra
     
 
-convert_to_radians:     # args: ($a0 = float(x))
-# return (x) * (pi/180)
+convert_to_radians:     # args: ($f12 = float(x))
+                        # return (x) * (pi/180)
+
+    move.s 	$f3, $f12	            # $f3 = x
+    li.s     $f4, 0.01745329251      # approximate representation of (pi/180)
+    
+    mult.s	$f0, $f3, $f4			# return into $f0 value of (x) * (pi/180)
+    jr		$ra					    # jump to $ra
+    
+    
 
