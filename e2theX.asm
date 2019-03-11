@@ -4,6 +4,19 @@
 
 main:
 
+define_e:
+    # args: ($f12 = level of precision)
+    # return: ($f0 = approximation of e)
+    # e = 1 + x + ((x^2)/2!) + ((x^3)/3!)
+    move.s  $f3, $f12       # init $f3 to level of precision
+    li.s    $f4, 
+
+e_loop:
+
+e_loop_done:
+    jr		$ra					# jump to $ra
+    
+
 exp:    # args: ($f12 = float(x)), ($a1 = int(exp_val))
         # return (x)^(exp_val)
     move.s 	$f4, $f12		# $f0 = float(x)
@@ -19,6 +32,7 @@ exp_loop:
 exp_loop_done:
     move 	$f0, $f4		# move total into return register $f0 
     jr		$ra				# return to $ra
+
 
 fact:   # args: ($a0 = y)
         # return ($v0 = y!)

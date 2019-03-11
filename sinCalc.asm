@@ -135,7 +135,7 @@ convert_to_radians:     # args: ($f12 = float(x))
                         # return (x) * (pi/180)
 
     move.s 	$f3, $f12	            # $f3 = x
-    li.s     $f4, 0.01745329251      # approximate representation of (pi/180)
+    li.s    $f4, 0.01745329251      # approximate representation of (pi/180)
     
     mult.s	$f0, $f3, $f4			# return into $f0 value of (x) * (pi/180)
     jr		$ra					    # jump to $ra
