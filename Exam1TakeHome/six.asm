@@ -1,3 +1,6 @@
+
+######################################### PROBLEM 6 #########################################
+
     .data
 prompt:     .asciiz "Enter your name: "
 hi_msg:     .asciiz "\nHi!! "
