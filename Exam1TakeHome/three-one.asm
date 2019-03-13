@@ -16,7 +16,7 @@ float_div:
 
     div.s   $f12, $f0, $f1  # $f12 = 1438/42.8
 
-    li		$v0, 2		    # $v0 = 3; print float
+    li		$v0, 2		    # $v0 = 2; print float
     syscall                 #
 
 write_newline:
