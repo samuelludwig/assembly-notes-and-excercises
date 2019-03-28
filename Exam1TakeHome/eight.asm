@@ -4,7 +4,7 @@
 # G(n+1) = (1/2)(G(n) + (a/G(n))
    
     .data
-sval:   .double  72673.88    # <- a
+sval:   .double  72673.88    # <- x
 sg1:    .double  850.0       # <- initial guess
 s1ovr2: .double  0.5         # <- (1/2) coefficient
 
@@ -15,7 +15,7 @@ main:
     jal		print_msg	    # jump to print_msg and save position to $ra
     nop                     #
 
-    l.d     $f12, sval      # $f12 = 72673.88 <- a
+    l.d     $f12, sval      # $f12 = 72673.88 <- x
     l.d     $f14, sg1       # $f13 = initial guess
     l.d     $f16, s1ovr2    # $f16 = 0.5 <- (1/2) coefficient
     jal		sqrt            # jump to single_sqrt and save position to $ra
