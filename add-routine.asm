@@ -9,7 +9,10 @@ main:
     jal		get_word_arr_size		# 
     nop                             #
 
-    
+    la		$a0, add_nums		    # add 32 to each element of add_nums
+    move	$a1, $v0		        # amount of elements in the array was returned in $v0
+    jal		add_num_arr				# 
+    nop                             #
 
     li		$v0, 10		            # exit
     syscall                         #
@@ -39,7 +42,7 @@ add_32:
     li		$v0, 1		            # print integer in $a0
     syscall                         #
 
-    li		$a0, 10		        # $a0 = 10 = newline in ASCII
+    li		$a0, 10		            # $a0 = 10 = newline in ASCII
     li		$v0, 11		            # print newline
     syscall                         #
 

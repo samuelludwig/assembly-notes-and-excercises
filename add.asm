@@ -1,7 +1,14 @@
-# adds 6 & 12
-main:
-	li		$t1, 6			# $t1 = 6
-	addi	$t0, $t1, 12	# $t0 = $t1 + 12
+# Samuel Ludwig
+# adds 20 & 19
+	.data
+sum: 	.word	0
 
-	li	$v0, 10
+	.text
+main:
+	li		$t1, 20			# $t1 = 6
+	addi	$t0, $t1, 19	# $t0 = $t1 + 12
+
+	sw		$t0, sum		# $t0 -> sum
+	
+	li	$v0, 10				# exit
 	syscall
